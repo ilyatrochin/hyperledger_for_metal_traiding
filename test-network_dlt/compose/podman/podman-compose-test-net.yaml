@@ -6,11 +6,11 @@
 version: '3.7'
 
 services:
-  peer0.org1.service.ru:
+  peer0.org1.service.com:
     volumes:
       - ./podman/peercfg:/etc/hyperledger/peercfg
 
-  peer0.org2.service.ru:
+  peer0.org2.service.com:
     volumes:
       - ./podman/peercfg:/etc/hyperledger/peercfg
 

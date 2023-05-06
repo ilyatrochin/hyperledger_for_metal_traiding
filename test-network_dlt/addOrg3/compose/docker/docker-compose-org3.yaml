@@ -11,8 +11,8 @@ networks:
 
 services:
 
-  peer0.org3.service.ru:
-    container_name: peer0.org3.service.ru
+  peer0.org3.service.com:
+    container_name: peer0.org3.service.com
     image: hyperledger/fabric-peer:latest
     labels:
       service: hyperledger-fabric

@@ -11,12 +11,12 @@
 . scripts/utils.sh
 
 export CORE_PEER_TLS_ENABLED=true
-export ORDERER_CA=${PWD}/organizations/ordererOrganizations/service.ru/tlsca/tlsca.service.ru-cert.pem
-export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.service.ru/tlsca/tlsca.org1.service.ru-cert.pem
-export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.service.ru/tlsca/tlsca.org2.service.ru-cert.pem
-export PEER0_ORG3_CA=${PWD}/organizations/peerOrganizations/org3.service.ru/tlsca/tlsca.org3.service.ru-cert.pem
-export ORDERER_ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/service.ru/orderers/orderer.service.ru/tls/server.crt
-export ORDERER_ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/service.ru/orderers/orderer.service.ru/tls/server.key
+export ORDERER_CA=${PWD}/organizations/ordererOrganizations/service.com/tlsca/tlsca.service.com-cert.pem
+export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.service.com/tlsca/tlsca.org1.service.com-cert.pem
+export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.service.com/tlsca/tlsca.org2.service.com-cert.pem
+export PEER0_ORG3_CA=${PWD}/organizations/peerOrganizations/org3.service.com/tlsca/tlsca.org3.service.com-cert.pem
+export ORDERER_ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/service.com/orderers/orderer.service.com/tls/server.crt
+export ORDERER_ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/service.com/orderers/orderer.service.com/tls/server.key
 
 # Set environment variables for the peer org
 setGlobals() {
@@ -30,18 +30,18 @@ setGlobals() {
   if [ $USING_ORG -eq 1 ]; then
     export CORE_PEER_LOCALMSPID="Org1MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG1_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.service.ru/users/Admin@org1.service.ru/msp
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.service.com/users/Admin@org1.service.com/msp
     export CORE_PEER_ADDRESS=localhost:7051
   elif [ $USING_ORG -eq 2 ]; then
     export CORE_PEER_LOCALMSPID="Org2MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG2_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.service.ru/users/Admin@org2.service.ru/msp
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.service.com/users/Admin@org2.service.com/msp
     export CORE_PEER_ADDRESS=localhost:9051
 
   elif [ $USING_ORG -eq 3 ]; then
     export CORE_PEER_LOCALMSPID="Org3MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG3_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org3.service.ru/users/Admin@org3.service.ru/msp
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org3.service.com/users/Admin@org3.service.com/msp
     export CORE_PEER_ADDRESS=localhost:11051
   else
     errorln "ORG Unknown"
@@ -63,11 +63,11 @@ setGlobalsCLI() {
     USING_ORG="${OVERRIDE_ORG}"
   fi
   if [ $USING_ORG -eq 1 ]; then
-    export CORE_PEER_ADDRESS=peer0.org1.service.ru:7051
+    export CORE_PEER_ADDRESS=peer0.org1.service.com:7051
   elif [ $USING_ORG -eq 2 ]; then
-    export CORE_PEER_ADDRESS=peer0.org2.service.ru:9051
+    export CORE_PEER_ADDRESS=peer0.org2.service.com:9051
   elif [ $USING_ORG -eq 3 ]; then
-    export CORE_PEER_ADDRESS=peer0.org3.service.ru:11051
+    export CORE_PEER_ADDRESS=peer0.org3.service.com:11051
   else
     errorln "ORG Unknown"
   fi

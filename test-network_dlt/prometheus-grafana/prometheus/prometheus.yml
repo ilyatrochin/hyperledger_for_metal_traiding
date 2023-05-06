@@ -9,13 +9,13 @@ scrape_configs:
       - targets: ["localhost:9090"]
   - job_name: "orderer"
     static_configs:
-      - targets: ["orderer.service.ru:9443"]
+      - targets: ["orderer.service.com:9443"]
   - job_name: "peer0_org1"
     static_configs:
-      - targets: ["peer0.org1.service.ru:9444"]
+      - targets: ["peer0.org1.service.com:9444"]
   - job_name: "peer0_org2"
     static_configs:
-      - targets: ["peer0.org2.service.ru:9445"]
+      - targets: ["peer0.org2.service.com:9445"]
   - job_name: cadvisor
     scrape_interval: 5s
     static_configs:

@@ -35,9 +35,9 @@ Brings up
 
 Fabric metrics targets:
 
-- `peer0.org1.service.ru:9444`
-- `peer0.org2.service.ru:9445`
-- `orderer.service.ru:9443`
+- `peer0.org1.service.com:9444`
+- `peer0.org2.service.com:9445`
+- `orderer.service.com:9443`
 
 System and docker metrics targets:
 

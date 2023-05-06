@@ -303,16 +303,16 @@ signing:
 #     CA certificates though it can still issue end entity certificates.
 ###########################################################################
 csr:
-   cn: ca.org3.service.ru
+   cn: ca.org3.service.com
    names:
       - C: US
         ST: "North Carolina"
         L: "Raleigh"
-        O: org3.service.ru
+        O: org3.service.com
         OU:
    hosts:
      - localhost
-     - org3.service.ru
+     - org3.service.com
    ca:
       expiry: 131400h
       pathlength: 1

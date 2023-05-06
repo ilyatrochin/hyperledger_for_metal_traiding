@@ -113,7 +113,7 @@ function generateOrg3Definition() {
   infoln "Generating Org3 organization definition"
   export FABRIC_CFG_PATH=$PWD
   set -x
-  configtxgen -printOrg Org3MSP > ../organizations/peerOrganizations/org3.service.ru/org3.json
+  configtxgen -printOrg Org3MSP > ../organizations/peerOrganizations/org3.service.com/org3.json
   res=$?
   { set +x; } 2>/dev/null
   if [ $res -ne 0 ]; then
@@ -125,7 +125,7 @@ function Org3Up () {
   # start org3 nodes
 
   if [ "$CONTAINER_CLI" == "podman" ]; then
-    cp ../podman/core.yaml ../../organizations/peerOrganizations/org3.service.ru/peers/peer0.org3.service.ru/
+    cp ../podman/core.yaml ../../organizations/peerOrganizations/org3.service.com/peers/peer0.org3.service.com/
   fi
 
   if [ "${DATABASE}" == "couchdb" ]; then
@@ -146,7 +146,7 @@ function addOrg3 () {
   fi
 
   # generate artifacts if they don't exist
-  if [ ! -d "../organizations/peerOrganizations/org3.service.ru" ]; then
+  if [ ! -d "../organizations/peerOrganizations/org3.service.com" ]; then
     generateOrg3
     generateOrg3Definition
   fi
