@@ -26,7 +26,16 @@ type Asset struct {
 
 func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	assets := []Asset{
-		{ID: "WareHouse1:ГОСТ 4832-95", Owner: "WareHouse1", Status: "ready", Type: "storage", Department: "WareHouse1", Code: "ГОСТ 4832-95", Value: 300, Date: "2023-03-01"},
+		{ID: "Склад:М2", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "М2", Value: 60, Date: "02.04.2023 09:01"},
+		{ID: "Склад:М3", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "М3", Value: 130, Date: "02.04.2023 09:04"},
+		{ID: "Склад:М2а", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "М2а", Value: 20, Date: "02.04.2023 09:08"},
+		{ID: "Склад:М4", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "М4", Value: 80, Date: "02.04.2023 09:09"},
+		{ID: "Склад:М8", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "М8", Value: 190, Date: "02.04.2023 09:15"},
+		{ID: "Склад:А2", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "А2", Value: 340, Date: "02.04.2023 09:32"},
+		{ID: "Склад:А19", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "А19", Value: 540, Date: "02.04.2023 09:45"},
+		{ID: "Склад:Бр1", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "Бр1", Value: 10, Date: "02.04.2023 09:52"},
+		{ID: "Склад:Л8", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "Л8", Value: 35, Date: "02.04.2023 09:55"},
+		{ID: "Склад:Ц7", Owner: "Склад", Status: "Готов к продаже", Type: "Хранение", Department: "Склад", Code: "Ц7", Value: 40, Date: "02.04.2023 09:58"},
 	}
 
 	for _, asset := range assets {
@@ -52,6 +61,12 @@ func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface,
 	}
 	if exists {
 		return fmt.Errorf("the asset %s already exists", id)
+	}
+
+	if Type == "Сделка" {
+		if Status != "Первичная договоренность" {
+			return fmt.Errorf("статус актива %s не соответсвует правилам", id)
+		}
 	}
 
 	asset := Asset{

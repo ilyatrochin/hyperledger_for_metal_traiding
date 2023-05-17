@@ -30,4 +30,4 @@ docker run -d --rm --name="logspout" \
 	--network  ${DOCKER_NETWORK} \
 	gliderlabs/logspout
 sleep 3
-curl http://127.0.0.1:${PORT}/logs
+curl http://127.0.0.1:${PORT}/logs >> logs.txt

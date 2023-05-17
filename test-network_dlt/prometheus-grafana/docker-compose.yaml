@@ -35,16 +35,18 @@ services:
     restart: always
 
   cadvisor:
-    image: google/cadvisor:latest # gcr.io/cadvisor/cadvisor:latest for ios
+    image: gcr.io/cadvisor/cadvisor:v0.46.0 #google/cadvisor:latest gcr.io/cadvisor/cadvisor:latest for ios
     privileged: true
     container_name: cadvisor
     volumes:
-      - /var/run:/var/run:rw
+      - /var/run:/var/run:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-      # - /cgroup:/cgroup:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/machine-id:/etc/machine-id:ro
+      - /var/lib/dbus/machine-id:/var/lib/dbus/machine-id:ro
     ports:
-      - 8080:8080
+      - 8081:8080
     restart: always
 
   node-exporter:

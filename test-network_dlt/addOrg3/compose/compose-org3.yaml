@@ -39,6 +39,7 @@ services:
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org3.service.com:11051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org3.service.com:11051
       - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_OPERATIONS_LISTENADDRESS=peer0.org3.service.com:9446
       - CORE_METRICS_PROVIDER=prometheus
       - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer0org1"}
       - CORE_CHAINCODE_EXECUTETIMEOUT=300s      
@@ -49,5 +50,6 @@ services:
     command: peer node start
     ports:
       - 11051:11051
+      - 9446:9446
     networks:
       - test
